@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <title>Airtel Lite - Activation confirmée</title>
+  <style>
+    :root {
+      --airtel-red: #cf1a20;
+      --text-dark: #3d4a59;
+      --text-grey: #9299a3;
+      --border-blue: #b7c0c9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      color: var(--text-dark);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .topbar {
+      height: 90px;
+      background: linear-gradient(90deg, #e51920 0%, #bc171d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .topbar .logo-img {
+      height: 48px;
+      width: auto;
+      padding: 7px 12px;
+      background: #fff;
+      border-radius: 6px;
+    }
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #fff;
+    }
+    .top-actions svg { width: 26px; height: 26px; }
+    .language {
+      min-width: 145px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .offer-bar {
+      height: 76px;
+      background: #1b2a4f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+    .offer-chip {
+      background: linear-gradient(135deg, #e7353a, #bc171d);
+      border-radius: 24px;
+      padding: 12px 18px;
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .offer-text { font-size: 22px; font-weight: 800; }
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 630px;
+      margin: 0 auto;
+      padding: 44px 25px 80px;
+    }
+    .secure-card {
+      border: 1px solid #e2e4e8;
+      border-radius: 34px;
+      background: #fff;
+      box-shadow: 0 12px 24px rgba(0,0,0,.12);
+      overflow: hidden;
+    }
+    .secure-head {
+      height: 170px;
+      background: var(--airtel-red);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .partner-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .partner-row .logo-img {
+      height: 64px;
+      width: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 8px 16px;
+    }
+    .multiply { font-size: 30px; font-weight: 700; }
+    .starlink-box {
+      height: 64px;
+      min-width: 180px;
+      background: #fff;
+      color: #111;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .starlink-box img { width:145px; height:52px; object-fit:contain; }
+    .secure-head h1 { font-size: 34px; line-height: 1; margin-top: 25px; }
+    .secure-body {
+      min-height: 420px;
+      padding: 38px 38px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .confirmed-mark {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      background: #1a9b57;
+      color: #fff;
+      font-size: 48px;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(26,155,87,.18);
+    }
+    .secure-body h2 {
+      color: var(--text-dark);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .secure-body p {
+      max-width: 470px;
+      color: #667085;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+    .plan-summary {
+      width: 100%;
+      margin: 24px 0 20px;
+      border: 2px solid #dfe5ea;
+      border-radius: 18px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .plan-summary span {
+      color: #9299a3;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .plan-summary strong {
+      display: block;
+      color: var(--text-dark);
+      font-size: 20px;
+      margin-top: 2px;
+    }
+    .plan-summary .amount {
+      color: var(--airtel-red);
+      font-size: 24px;
+      font-weight: 900;
+      text-align: right;
+    }
+    .home-btn {
+      width: 100%;
+      min-height: 86px;
+      border: none;
+      border-radius: 22px;
+      background: #1d4e9b;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      box-shadow: 0 10px 16px rgba(29,78,155,.25);
+    }
+
+    @media (max-width: 480px) {
+      body { min-height: 100dvh; }
+      .topbar { height: 64px; padding: 0 12px; }
+      .topbar .logo-img { height: 40px; padding: 5px 9px; }
+      .top-actions { gap: 7px; }
+      .top-actions svg { width: 20px; height: 20px; }
+      .top-actions svg:nth-of-type(2) { display: none; }
+      .language { min-width: 74px; height: 34px; border-radius: 8px; font-size: 12px; }
+      .offer-bar { height: 44px; gap: 8px; padding: 0 10px; }
+      .offer-chip { border-radius: 14px; padding: 6px 9px; font-size: 11px; }
+      .offer-text { min-width: 0; font-size: 11px; line-height: 1.2; }
+      main { max-width: none; padding: 16px 12px 28px; }
+      .secure-card { border-radius: 18px; box-shadow: 0 6px 16px rgba(0,0,0,.10); }
+      .secure-head { height: 128px; }
+      .partner-row { gap: 10px; }
+      .partner-row .logo-img { height: 44px; border-radius: 6px; padding: 5px 9px; }
+      .multiply { font-size: 19px; }
+      .starlink-box { height: 44px; min-width: 112px; border-radius: 6px; }
+      .starlink-box img { width:96px; height:36px; }
+      .secure-head h1 { font-size: 22px; margin-top: 16px; }
+      .secure-body { min-height: 350px; padding: 20px 16px 16px; }
+      .confirmed-mark { width: 62px; height: 62px; font-size: 38px; margin-bottom: 14px; }
+      .secure-body h2 { font-size: 18px; }
+      .secure-body p { font-size: 14px; }
+      .plan-summary { margin: 18px 0 16px; padding: 12px 14px; border-radius: 12px; }
+      .plan-summary strong { font-size: 16px; }
+      .plan-summary .amount { font-size: 18px; }
+      .home-btn { min-height: 54px; border-radius: 12px; font-size: 16px; letter-spacing: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <img src="airtel_logo.png" alt="Airtel" class="logo-img">
+    <div class="top-actions" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 19.5h.01"/><path d="M2.5 9a15 15 0 0 1 19 0"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg>
+      <div class="language">FR</div>
+    </div>
+  </header>
+
+  <div class="offer-bar">
+    <span class="offer-chip">70% OFF</span>
+    <span class="offer-text">OFFRES DISPONIBLES JUSQU’EN MAI 2027</span>
+  </div>
+
+  <main>
+    <section class="secure-card">
+      <div class="secure-head">
+        <div class="partner-row">
+          <img src="airtel_logo.png" alt="Airtel" class="logo-img">
+          <span class="multiply">×</span>
+          <div class="starlink-box"><img src="starlink_logo.png" alt="Starlink"></div>
+        </div>
+        <h1>Activation confirmée</h1>
+      </div>
+
+      <div class="secure-body">
+        <div class="confirmed-mark" aria-hidden="true">✓</div>
+        <h2>Votre achat est confirmé</h2>
+        <p>Votre demande a été enregistrée avec succès.</p>
+
+        <div class="plan-summary">
+          <div>
+            <span>Forfait sélectionné</span>
+            <strong id="planName">—</strong>
+          </div>
+          <strong class="amount" id="amount">$—</strong>
+        </div>
+
+        <a class="home-btn" href="/">RETOUR À L’ACCUEIL</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get('plan') || '—';
+    const price = params.get('price') || '—';
+    const frenchPlans = { Unlimited: 'Illimité' };
+    document.getElementById('planName').textContent = frenchPlans[plan] || plan;
+    document.getElementById('amount').textContent = price === '—'
+      ? '$—'
+      : '$' + price + ' (FC ' + Math.round(Number(price) * 2850).toLocaleString('fr-FR') + ')';
+  </script>
+</body>
+</html>

